@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruby's Diner - Classic American Diner</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1>🍔 Ruby's Diner</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#menu" class="nav-link">Menu</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="#" class="nav-link cart-icon-link" onclick="toggleCart(event)">🛒 Cart <span class="cart-count">0</span></a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Welcome to Ruby's Diner</h2>
+            <p>Your favorite spot for classic American comfort food since 1985</p>
+            <button class="btn btn-primary" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">View Menu</button>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2 class="section-title">Our Menu</h2>
+            
+            <!-- Menu Category Tabs -->
+            <div class="menu-tabs">
+                <button class="tab-btn active" onclick="showMenu('breakfast')">Breakfast</button>
+                <button class="tab-btn" onclick="showMenu('lunch')">Lunch</button>
+                <button class="tab-btn" onclick="showMenu('dinner')">Dinner</button>
+                <button class="tab-btn" onclick="showMenu('drinks')">Drinks</button>
+            </div>
+
+            <!-- Breakfast Menu -->
+            <div id="breakfast" class="menu-items active">
+                <div class="menu-item">
+                    <h3>🥞 Classic Pancakes</h3>
+                    <p>Three fluffy pancakes with butter and maple syrup</p>
+                    <span class="price">$8.99</span>
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="decreaseQty(this)">-</button>
+                        <input type="number" class="qty-input" value="1" min="1">
+                        <button class="qty-btn" onclick="increaseQty(this)">+</button>
+                    </div>
+                    <button class="btn btn-add-cart" onclick="addToCart('Classic Pancakes', 8.99, this)">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <h3>🍳 Country Scramble</h3>
+                    <p>Eggs, hash browns, bacon, sausage, and toast</p>
+                    <span class="price">$10.99</span>
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="decreaseQty(this)">-</button>
+                        <input type="number" class="qty-input" value="1" min="1">
+                        <button class="qty-btn" onclick="increaseQty(this)">+</button>
+                    </div>
+                    <button class="btn btn-add-cart" onclick="addToCart('Country Scramble', 10.99, this)">Add to Cart</button>
+                </div>
+            <!-- Lunch Menu -->
+            <div id="lunch" class="menu-items">
+                <div class="menu-item">
+                    <h3>🍔 Classic Burger</h3>
+                    <p>Half-pound patty with lettuce, tomato, and special sauce</p>
+                    <span class="price">$11.99</span>
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="decreaseQty(this)">-</button>
+                        <input type="number" class="qty-input" value="1" min="1">
+                        <button class="qty-btn" onclick="increaseQty(this)">+</button>
+                    </div>
+                    <button class="btn btn-add-cart" onclick="addToCart('Classic Burger', 11.99, this)">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <h3>🍗 Crispy Fried Chicken Sandwich</h3>
+                    <p>Golden fried chicken breast on a soft bun</p>
+                    <span class="price">$10.99</span>
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="decreaseQty(this)">-</button>
+                        <input type="number" class="qty-input" value="1" min="1">
+                        <button class="qty-btn" onclick="increaseQty(this)">+</button>
+                    </div>
+                    <button class="btn btn-add-cart" onclick="addToCart('Crispy Fried Chicken Sandwich', 10.99, this)">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <h3>🥪 Reuben Sandwich</h3>
+                    <p>Corned beef, sauerkraut, Swiss cheese, and Russian dressing</p>
+                    <span class="price">$11.49</span>
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="decreaseQty(this)">-</button>
+                        <input type="number" class="qty-input" value="1" min="1">
+                        <button class="qty-btn" onclick="increaseQty(this)">+</button>
+                    </div>
+                    <button class="btn btn-add-cart" onclick="addToCart('Reuben Sandwich', 11.49, this)">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <h3>🍖 Turkey Club</h3>
+                    <p>Three layers of turkey, bacon, lettuce, and tomato</p>
+                    <span class="price">$10.99</span>
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="decreaseQty(this)">-</button>
+                        <input type="number" class="qty-input" value="1" min="1">
+                        <button class="qty-btn" onclick="increaseQty(this)">+</button>
+                    </div>
+                    <button class="btn btn-add-cart" onclick="addToCart('Turkey Club', 10.99, this)">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Dinner Menu -->
+            <div id="dinner" class="menu-items">
+                <div class="menu-item">
+                    <h3>🥩 New York Strip Steak</h3>
+                    <p>12 oz steak with mashed potatoes and seasonal vegetables</p>
+                    <span class="price">$24.99</span>
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="decreaseQty(this)">-</button>
+                        <input type="number" class="qty-input" value="1" min="1">
+                        <button class="qty-btn" onclick="increaseQty(this)">+</button>
+                    </div>
+                    <button class="btn btn-add-cart" onclick="addToCart('New York Strip Steak', 24.99, this)">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <h3>🍖 Meatloaf Special</h3>
+                    <p>Homemade meatloaf with gravy, mashed potatoes, and green beans</p>
+                    <span class="price">$14.99</span>
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="decreaseQty(this)">-</button>
+                        <input type="number" class="qty-input" value="1" min="1">
+                        <button class="qty-btn" onclick="increaseQty(this)">+</button>
+                    </div>
+                    <button class="btn btn-add-cart" onclick="addToCart('Meatloaf Special', 14.99, this)">Add to Cart</button>
+                </div>
+            <!-- Drinks Menu -->
+            <div id="drinks" class="menu-items">
+                <div class="menu-item">
+                    <h3>🥤 Classic Milkshake</h3>
+                    <p>Vanilla, Chocolate, or Strawberry</p>
+                    <span class="price">$5.99</span>
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="decreaseQty(this)">-</button>
+                        <input type="number" class="qty-input" value="1" min="1">
+                        <button class="qty-btn" onclick="increaseQty(this)">+</button>
+                    </div>
+                    <button class="btn btn-add-cart" onclick="addToCart('Classic Milkshake', 5.99, this)">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <h3>🍋 Homemade Lemonade</h3>
+                    <p>Freshly made with fresh lemons</p>
+                    <span class="price">$3.99</span>
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="decreaseQty(this)">-</button>
+                        <input type="number" class="qty-input" value="1" min="1">
+                        <button class="qty-btn" onclick="increaseQty(this)">+</button>
+                    </div>
+                    <button class="btn btn-add-cart" onclick="addToCart('Homemade Lemonade', 3.99, this)">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <h3>🍦 Root Beer Float</h3>
+                    <p>Old-fashioned root beer with vanilla ice cream</p>
+                    <span class="price">$5.49</span>
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="decreaseQty(this)">-</button>
+                        <input type="number" class="qty-input" value="1" min="1">
+                        <button class="qty-btn" onclick="increaseQty(this)">+</button>
+                    </div>
+                    <button class="btn btn-add-cart" onclick="addToCart('Root Beer Float', 5.49, this)">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <h3>🧋 Fresh Brewed Iced Tea</h3>
+                    <p>Sweet or unsweetened</p>
+                    <span class="price">$2.99</span>
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="decreaseQty(this)">-</button>
+                        <input type="number" class="qty-input" value="1" min="1">
+                        <button class="qty-btn" onclick="increaseQty(this)">+</button>
+                    </div>
+                    <button class="btn btn-add-cart" onclick="addToCart('Fresh Brewed Iced Tea', 2.99, this)">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Dinner Menu -->
+            <div id="dinner" class="menu-items">
+                <div class="menu-item">
+                    <h3>New York Strip Steak</h3>
+                    <p>12 oz steak with mashed potatoes and seasonal vegetables</p>
+                    <span class="price">$24.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Meatloaf Special</h3>
+                    <p>Homemade meatloaf with gravy, mashed potatoes, and green beans</p>
+                    <span class="price">$14.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Fried Chicken Dinner</h3>
+                    <p>Golden fried chicken with biscuits and collard greens</p>
+                    <span class="price">$15.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Grilled Salmon</h3>
+                    <p>Fresh salmon fillet with asparagus and wild rice</p>
+                    <span class="price">$18.99</span>
+                </div>
+            </div>
+
+            <!-- Drinks Menu -->
+            <div id="drinks" class="menu-items">
+                <div class="menu-item">
+                    <h3>Classic Milkshake</h3>
+                    <p>Vanilla, Chocolate, or Strawberry</p>
+                    <span class="price">$5.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Homemade Lemonade</h3>
+                    <p>Freshly made with fresh lemons</p>
+                    <span class="price">$3.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Root Beer Float</h3>
+                    <p>Old-fashioned root beer with vanilla ice cream</p>
+                    <span class="price">$5.49</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Fresh Brewed Iced Tea</h3>
+                    <p>Sweet or unsweetened</p>
+                    <span class="price">$2.99</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About Ruby's Diner</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Welcome to Ruby's Diner, a cornerstone of our community since 1985. We pride ourselves on serving authentic American comfort food with a personal touch. Every meal is prepared fresh using the finest ingredients.</p>
+                    <p>Our dedicated team of chefs and servers treat every guest like family. Whether you're stopping by for a quick breakfast, a business lunch, or a special dinner, we promise you an unforgettable experience.</p>
+                    <ul class="features">
+                        <li>✓ Open 24/7</li>
+                        <li>✓ Free WiFi</li>
+                        <li>✓ Wheelchair Accessible</li>
+                        <li>✓ Family Friendly</li>
+                        <li>✓ Private Booths Available</li>
+                        <li>✓ Catering Services</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>📍 Location</h3>
+                        <p>123 Main Street<br>Small Town, USA 12345</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>📞 Phone</h3>
+                        <p>(555) 123-4567</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>🕒 Hours</h3>
+                        <p>Open 24/7<br>365 Days a Year</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>📧 Email</h3>
+                        <p>info@rubysdiner.com</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🛒 Shopping Cart</h2>
+                <span class="close" onclick="toggleCart()">&times;</span>
+            </div>
+            <div class="cart-items-container" id="cartItemsContainer">
+                <p class="empty-cart">Your cart is empty</p>
+            </div>
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Tax (10%):</span>
+                    <span id="tax">$0.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span id="total">$0.00</span>
+                </div>
+            </div>
+            <div class="cart-actions">
+                <button class="btn btn-secondary" onclick="toggleCart()">Continue Shopping</button>
+                <button class="btn btn-primary" id="checkoutBtn" onclick="checkout()" disabled>Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Ruby's Diner. All rights reserved.</p>
+            <p>Made with ❤️ for lovers of classic American diner food</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

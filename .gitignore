@@ -1,0 +1,22 @@
+# Node modules (if you add Node.js dependencies later)
+node_modules/
+npm-debug.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build files
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
